@@ -27,7 +27,7 @@ spec:
         - command:
             - python3
             - create_db.py
-          image: "192.168.88.20:8082/course_catalog:latest"
+          image: "silvemerson/course_catalog:latest"
           name: simple-python-flask-init-db
           resources: {}
       restartPolicy: Always

@@ -28,12 +28,9 @@ spec:
           ports:
             - containerPort: 3306
           resources: {}
-          volumeMounts:
-            - mountPath: /var/lib/mysql
-              name: mariadb-data
       restartPolicy: Always
-      volumes:
-        - name: mariadb-data
-          persistentVolumeClaim:
-            claimName: mariadb-data-pvc
+      # volumes:
+      #   - name: mariadb-data
+      #     persistentVolumeClaim:
+      #       claimName: mariadb-data-pvc
 status: {}
