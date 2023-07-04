@@ -1,0 +1,35 @@
+stages:
+ - build
+ - test
+ - deploy
+
+kaniko:
+  stage: build
+  image:
+    name: "gcr.io/kaniko-project/executor:debug"
+    entrypoint: ["./"]
+  script:
+    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $DOCKER_REGISTRY:$CI_PIPELINE_ID --destination $DOCKER_REGISTRY:latest
+
+test_users:
+ stage: test
+ script:
+  - python3 test_users.py
+
+test_functional:
+ stage: test
+ script:
+  - python3 test_functional.py
+
+deploy:
+ stage: deploy
+ image: google/cloud-sdk
+ script:
+   - echo "$SERVICE_ACCOUNT_KEY" > key.json
+   - gcloud auth activate-service-account --key-file=key.json
+   - gcloud config set project root-sanctuary-389315
+   - gcloud config set container/cluster sparta-cluster
+   - gcloud config set compute/zone us-east1 
+   - gcloud container clusters get-credentials sparta-cluster --zone us-central1-c --project root-sanctuary-389315
+   - kubectl get pod -A
+

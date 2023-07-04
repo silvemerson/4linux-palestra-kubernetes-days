@@ -1,0 +1,64 @@
+{% extends "_base.html"%}
+{% block content %}
+
+<div class="modal-dialog">
+
+
+  <div class="modal-content col-sm-12 text-center">
+    <div class="login-logo col-12">
+      <img src="https://2via.4linux.com.br/image/logo.png"/>
+    </div>
+
+
+    <form action="/register" class="col-12" method="post">
+        {{ form.csrf_token }}
+        <div class="form-group">
+          {{ form.name(placeholder="Username", class="form-control")}}
+          {% if form.name.errors %}
+          <div class="alert alert-danger">
+            {% for error in form.name.errors %}
+              {{error}}
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          {{ form.email(placeholder="Email", class="form-control")}}
+          {% if form.email.errors %}
+          <div class="alert alert-danger">
+            {% for error in form.email.errors %}
+              {{error}}
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          {{ form.password(placeholder="Password",  class="form-control" )}}
+          {% if form.password.errors %}
+          <div class="alert alert-danger">
+            {% for error in form.password.errors %}
+              {{error}}
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          {{ form.confirm(placeholder="Repeat Password",  class="form-control" )}}
+          {% if form.confirm.errors %}
+          <div class="alert alert-danger">
+            {% for error in form.confirm.errors %}
+              {{error}}
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        <button class="btn btn-lg btn-primary" value="Register" type="submit"><i class="fa fa-sign-in" aria-hidden="true"></i> Registry</button>
+    </form>
+
+  </div>
+</div>
+
+
+
+
+{% endblock %}

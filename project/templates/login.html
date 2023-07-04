@@ -1,0 +1,48 @@
+{% extends "_base.html" %}
+{% block content %}
+
+  <div class="modal-dialog">
+
+
+    <div class="modal-content col-sm-12 text-center">
+	    <div class="login-logo col-12">
+	  	  <img src="https://2via.4linux.com.br/image/logo.png"/>
+	    </div>
+
+
+      <form action="/" class="col-12" method="post">
+          {{ form.csrf_token }}
+          <div class="form-group">
+            <!-- <input type="text" name="username" class="form-control" placeholder="Enter Username" value="{{ request.form.username }}" > -->
+            {{ form.name(placeholder="Username", class="form-control")}}
+            {% if form.name.errors %}
+            <div class="alert alert-danger">
+              {% for error in form.name.errors %}
+                {{error}}
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+          <div class="form-group">
+            <!-- <input type="password" name="password" class="form-control" placeholder="Enter Password" value="{{ request.form.password }}"> -->
+            {{ form.password(placeholder="Password",  class="form-control" )}}
+            {% if form.password.errors %}
+            <div class="alert alert-danger">
+              {% for error in form.password.errors %}
+                {{error}}
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+          <button class="btn btn-lg btn-primary" value="Login" type="submit" id="loginbutton"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</button>
+      </form>
+
+      <div class="registry-redirect">
+        If you are not registry click <a href="/register">here</a>
+      </div>
+
+
+    </div>
+  </div>
+
+{% endblock %}

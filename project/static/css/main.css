@@ -1,0 +1,38 @@
+.modal-content {
+  background-color: white;
+  opacity: 95%;
+  border-radius: 5px;
+  margin-top: 170px;
+  box-shadow: 0px 0px 5px white;
+  padding: 10px;
+}
+
+.login-logo {
+  margin-top: -60px;
+  margin-bottom: 30px;
+  background-color: #cccccc;
+  box-shadow: 0px 0px 5px white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.login-logo  img {
+  height: 100px;
+  /*width: 100px;*/
+}
+
+.form-group input {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+
+/*
+CSS related to listCourses.html
+*/
+
+
+.courses-list {
+  padding: 15px;
+  display: inline-inline-block;
+}

@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg   navbar-light bg-light">
+ <a class="navbar-brand" href="#">
+   <img src="https://2via.4linux.com.br/image/logo.png" width="100" height="30" class="d-inline-block align-top" alt=""></img>
+ </a>
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+ </button>
+ <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+   <ul class='nav navbar-nav navbar-right'>
+     {% if not session.logged_in %}
+      <a class='nav-item nav-link' href="{{url_for('users.register')}}">Signup</a></li>
+     {% else %}
+      <a class='nav-item nav-link' href="#">Bem vindo, {{username}}.</a>
+      <a class='nav-item nav-link' href="{{url_for('users.logout')}}"><span class="fa fa-sign-out"></span></a>
+     {% endif %}
+   </ul>
+ </div>
+</nav>
+
+
+{% extends "_base.html" %}
+{% block content %}
+
+
+  <div class="card-columns courses-list text-center">
+    {% for course in courses %}
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="static/images/courses-linux-thumbnail.png" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{course.name}}</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><span class="fa fa-clock-o"></span>  {{course.duration}} horas </li>
+        <li class="list-group-item"><span class="fa fa-calendar"></span>  10/10/2020 - 14/10/2020</li>
+      </ul>
+    </div>  <!-- Ending courses-list content -->
+    {% endfor %}
+  </div>
+
+{% endblock %}
