@@ -99,7 +99,7 @@ helm install -n sonarqube sonarqube sonarqube/sonarqube -f sonarqube/sonarqube-v
 
 ### GCP Service Account
 
-IAM > Conta de Serviço > Criar conta > concenter permissão > Gerar chave .json
+IAM > Conta de Serviço > Criar conta > concender permissão > Gerar chave .json
 
 
 ### Variables GitLab
