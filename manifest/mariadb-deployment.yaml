@@ -24,6 +24,7 @@ spec:
             - name: MYSQL_ROOT_PASSWORD
               value: qwe123qwe
           image: mariadb:latest
+          imagePullPolicy: Always
           name: mariadb
           ports:
             - containerPort: 3306

@@ -4,7 +4,7 @@ WORKDIR courseCatalog/
 
 ADD . /courseCatalog/
 
-RUN apt update; apt install -y python3-mysqldb libmariadb-dev gcc
+RUN apt update; apt install -y default-libmysqlclient-dev build-essential gcc
 
 RUN pip install -r requirements.txt
 

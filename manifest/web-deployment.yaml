@@ -24,10 +24,16 @@ spec:
         io.kompose.service: web
     spec:
       containers:
-        - image: "silvemerson/course_catalog"
+        - image: silvemerson/course_catalog:latest
+          imagePullPolicy: Always
           name: simplepythonflask
           ports:
             - containerPort: 5000
+      initContainers:
+        - name: init-db
+          image: silvemerson/course_catalog:latest
+          imagePullPolicy: Always
+          command: ['python3', 'create_db.py']            
           resources: {}
       restartPolicy: Always
 status: {}
