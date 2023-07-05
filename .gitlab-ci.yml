@@ -1,11 +1,10 @@
 stages:
- - test_unit
- - qualitygate
+ - test
  - build
  - deploy
 
 test_users:
- stage: test_unit
+ stage: test
  image: python:3
  script:
   - cd $CI_PROJECT_DIR/courseCatalog
@@ -13,7 +12,7 @@ test_users:
   - python test_users.py
 
 python-qualitygate:
- stage: qualitygate
+ stage: test
  image: sonarsource/sonar-scanner-cli
  script:
   - cd $CI_PROJECT_DIR/courseCatalog

@@ -24,11 +24,10 @@ spec:
         io.kompose.service: web-initiate-db
     spec:
       containers:
-        - command:
-            - python3
-            - create_db.py
-          image: "silvemerson/course_catalog:latest"
-          name: simple-python-flask-init-db
-          resources: {}
+      - name: simple-python-flask-init-db
+        image: silvemerson/course_catalog:latest
+        command:
+          - 'python'
+          - 'create_db.py'
       restartPolicy: Always
 status: {}
